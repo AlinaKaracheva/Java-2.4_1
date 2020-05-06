@@ -11,9 +11,9 @@ public class StatsService {
 
 
     public int calculateAverage(int[] monthlySales) { //Средняя сумма продаж в месяц
-        int AverageSum = calculateTotal(monthlySales);
+        int averageSum = calculateTotal(monthlySales);
 
-        return AverageSum / 12;
+        return averageSum / 12;
     }
 
 
@@ -23,10 +23,10 @@ public class StatsService {
         for (int i = 0; i < sales.length; i++) {
             if (maxSale <= sales[i]) {
                 maxSale = sales[i];
-                monthMax = i + 1;
+                monthMax = i;
             }
         }
-        return monthMax;
+        return monthMax + 1;
     }
 
 
@@ -36,10 +36,10 @@ public class StatsService {
         for (int i = 0; i < sales.length; i++) {
             if (minSale >= sales[i]) {
                 minSale = sales[i];
-                monthMin = i + 1;
+                monthMin = i;
             }
         }
-        return monthMin;
+        return monthMin + 1;
 
     }
 
@@ -50,7 +50,7 @@ public class StatsService {
         for (int sale : sales) {
             if (sale < monthAverage) {
                 sale = 1;
-                amountBelow += sale;
+                amountBelow++;
             }
         }
         return amountBelow;
@@ -63,7 +63,7 @@ public class StatsService {
         for (int sale : sales) {
             if (sale > monthAverage) {
                 sale = 1;
-                amountAbove += sale;
+                amountAbove++;
             }
         }
         return amountAbove;
